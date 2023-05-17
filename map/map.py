@@ -6,4 +6,4 @@ elif which_map.capitalize() == "Dungeon":
 elif which_map.capitalize() == "Dungeon2":
   from dungeon2 import dungeion2
 else: 
-  print("Please try again")
+  print("Please try again 💋")

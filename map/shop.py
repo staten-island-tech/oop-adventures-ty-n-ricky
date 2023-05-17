@@ -8,7 +8,7 @@ inventory_sword = 0
 inventory_sledgehammer = 0
 inventory_axe = 0
 inventory_scythe = 0
-gold = 100
+gold = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
 def shop():
        what_buy = input("What do you want to buy? (Food,Armor,Weapon) ")
        if what_buy.capitalize() == "Food":
@@ -87,7 +87,7 @@ def shop():
                print("Your gold",new_gold)
                print("Your scythe",new_inventory_scythe)
 shop()
-continue_shop = input("Would you like to keep shopping? Y/N ")
+continue_shop = input("Would you like to keep shopping? Y/N 💖 ")
 while continue_shop.upper() == "Y":
     shop()
-    continue_shop = input("Would you like to keep shopping? Y/N ")
+    continue_shop = input("Would you like to keep shopping? Y/N 💖 ")
