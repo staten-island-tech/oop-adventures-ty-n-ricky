@@ -1,5 +1,7 @@
-weapon_list = []
-amor_list = []
+def inventoryyyyy():
+        
+        weapon_list = []  
+armor_list = []
 
 
 
