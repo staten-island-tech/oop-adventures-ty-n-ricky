@@ -1,4 +1,16 @@
 
+weapons = []
+inventory_apple = 0
+inventory_bread = 0
+inventory_pie = 0
+inventory_bronze = 0
+inventory_iron = 0
+inventory_steel = 0
+inventory_sword = 0
+inventory_sledgehammer = 0
+inventory_axe = 0
+inventory_scythe = 0
+gold = {"gold": 100}
 
 
 def apple_buy():
@@ -47,7 +59,8 @@ def buy_steel():
       print("Your gold", new_gold)
       print("Your steel", new_inventory_steel)
 def buy_sword():
-   new_gold = gold - 10
+   new_gold = gold["gold"] - 10
+   gold.update({'gold':new_gold})
    if new_gold >= 0:
       new_inventory_sword = int(inventory_sword) + 1
       weapons.append("sword")
