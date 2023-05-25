@@ -1,8 +1,8 @@
-
 import random
 inventory_apple = 1
 inventory_bread = 1
 inventory_pie = 1
+real_hp = 100
 Max_hp = 100
 Apple = 20
 Bread = 50
@@ -31,48 +31,52 @@ player = Player(100, 5)
 skeleton = Mobs(30, 20, 2)
 goblin = Mobs(50, 10, 2)
 orc = Mobs(75, 5, 3)
+player.hp = player.hp - 30
+print(player.hp)
+player.hp = player.hp - 30
+print(player.hp)
 def eat_food():
-    which_eat = input("What do you want to eat? ")
-    while inventory_apple > 0:
+    which_eat = input("What food do you want to eat? (Apple, Bread, Pie) ")
+    if inventory_apple > 0:
         if which_eat.capitalize() == "Apple":
-            if Apple + player_hp > Max_hp:
-                player_hp = Max_hp
-                print(player_hp)
+            if Apple + real_hp > Max_hp:
+                real_hp = Max_hp
+                print("Your health",real_hp)
             else:
-                player_hp = Apple + Max_hp
-                print(player_hp)
-    while inventory_bread > 0:
+                real_hp = Apple + Max_hp
+                print("Your health",real_hp)
+    if inventory_bread > 0:
        if which_eat.capitalize() == "Bread":
-          if Bread + player_hp > Max_hp:
-                player_hp = Max_hp
-                print(player_hp)
+          if Bread + real_hp > Max_hp:
+                real_hp = Max_hp
+                print("Your health",real_hp)
           else:
-               player_hp = Bread + Max_hp
-               print(player_hp)
-    while inventory_pie > 0:
+               real_hp = Bread + Max_hp
+               print("Your health",real_hp)
+    if inventory_pie > 0:
        if which_eat.capitalize() == "Pie":
-          if Pie + player_hp > Max_hp:
-                player_hp = Max_hp
-                print(player_hp)
+          if Pie + real_hp > Max_hp:
+                real_hp = Max_hp
+                print("Your health",real_hp)
           else:
-                player_hp = Pie + Max_hp
-                print(player_hp)
+                real_hp = Pie + Max_hp
+                print("Your health",real_hp)
 def fight_skeleton():
-    newhp = skeleton.hp - player.attack
-    print(newhp, "health left")
-    if newhp < 1:
+    new_player_hp = skeleton.hp - player.attack
+    print(new_player_hp, "health left")
+    if new_player_hp < 1:
         new_gold = gold + skeleton.gold_drop
         print("Your gold:", new_gold)
 def fight_goblin():
-    newhp = goblin.hp - player.attack
-    print(newhp, "health left")
-    if newhp < 1:
+    new_player_hp = goblin.hp - player.attack
+    print(new_player_hp, "health left")
+    if new_player_hp < 1:
        new_gold = gold + goblin.gold_drop
        print("Your gold:", new_gold)
 def fight_orc():
-    newhp = orc.hp - player.attack
-    print(newhp, "health left")
-    if newhp < 1:
+    new_player_hp = orc.hp - player.attack
+    print(new_player_hp, "health left")
+    if new_player_hp < 1:
         new_gold = gold + orc.gold_drop
         print("Your gold:", new_gold)
 def keep_fighting_skeleton():
@@ -108,7 +112,6 @@ if randoms == 1:
        fight_skeleton()
        keep_fighting_skeleton()
     elif choose.capitalize() == "Food":
-        which_eat = input("What do you want to eat? ")
         eat_food()
     elif choose.capitalize() == "Run":
         print("You fled")
@@ -138,3 +141,5 @@ elif randoms == 3:
         print("You fled")
     else:
         print("Something went wrong _(:з)∠)_")
+
+
