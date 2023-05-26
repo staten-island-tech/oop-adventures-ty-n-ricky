@@ -20,86 +20,93 @@ scythe = Weapon(100, 75)
 
 
 class Player():
-    def __init__(self, hp, attack ):
+    def __init__(self, hp, attack, gold):
         self.hp = hp
         self.attack = attack
+        self.gold = gold
 class Mobs(Player):
-    def __init__(self, hp, attack, gold_drop):
-        super().__init__(hp, attack)
+    def __init__(self, hp, attack, gold_drop, gold):
+        super().__init__(hp, attack, gold)
         self.gold_drop = gold_drop
-player = Player(100, 5)
-skeleton = Mobs(30, 20, 2)
-goblin = Mobs(50, 10, 2)
-orc = Mobs(75, 5, 3)
-player.hp = player.hp - 30
-print(player.hp)
-player.hp = player.hp - 30
-print(player.hp)
+player = Player(100, 5, 0)
+skeleton = Mobs(30, 20, 2, 0)
+goblin = Mobs(50, 10, 2, 0)
+orc = Mobs(75, 5, 3, 0)
+
 def eat_food():
     which_eat = input("What food do you want to eat? (Apple, Bread, Pie) ")
     if inventory_apple > 0:
         if which_eat.capitalize() == "Apple":
-            if Apple + real_hp > Max_hp:
-                real_hp = Max_hp
-                print("Your health",real_hp)
+            if Apple + player.hp > Max_hp:
+                player.hp = Max_hp
+                print("Your health",player.hp)
             else:
-                real_hp = Apple + Max_hp
-                print("Your health",real_hp)
+                player.hp = Apple + Max_hp
+                print("Your health",player.hp)
     if inventory_bread > 0:
        if which_eat.capitalize() == "Bread":
-          if Bread + real_hp > Max_hp:
-                real_hp = Max_hp
-                print("Your health",real_hp)
+          if Bread + player.hp > Max_hp:
+                player.hp = Max_hp
+                print("Your health",player.hp)
           else:
-               real_hp = Bread + Max_hp
-               print("Your health",real_hp)
+               player.hp = Bread + Max_hp
+               print("Your health",player.hp)
     if inventory_pie > 0:
        if which_eat.capitalize() == "Pie":
-          if Pie + real_hp > Max_hp:
-                real_hp = Max_hp
-                print("Your health",real_hp)
+          if Pie + player.hp > Max_hp:
+                player.hp = Max_hp
+                print("Your health",player.hp)
           else:
-                real_hp = Pie + Max_hp
-                print("Your health",real_hp)
+                player.hp = Pie + Max_hp
+                print("Your health",player.hp)
 def fight_skeleton():
-    new_player_hp = skeleton.hp - player.attack
-    print(new_player_hp, "health left")
-    if new_player_hp < 1:
-        new_gold = gold + skeleton.gold_drop
-        print("Your gold:", new_gold)
+    skeleton.hp = skeleton.hp - player.attack
+    print(skeleton.hp, "health left")
+    if skeleton.hp < 1:
+        player.gold = player.gold + skeleton.gold_drop
+        print("Your gold:", player.gold)
 def fight_goblin():
-    new_player_hp = goblin.hp - player.attack
-    print(new_player_hp, "health left")
-    if new_player_hp < 1:
-       new_gold = gold + goblin.gold_drop
-       print("Your gold:", new_gold)
+    goblin.hp = goblin.hp - player.attack
+    print(goblin.hp, "health left")
+    if goblin.hp < 1:
+       player.gold = player.gold + goblin.gold_drop
+       print("Your gold:", player.gold)
 def fight_orc():
-    new_player_hp = orc.hp - player.attack
-    print(new_player_hp, "health left")
-    if new_player_hp < 1:
-        new_gold = gold + orc.gold_drop
-        print("Your gold:", new_gold)
-def keep_fighting_skeleton():
-    new_player_hp = player.hp - skeleton.attack
-    print("Your hp",new_player_hp)
-    keep_fight = input("Do you want to keep fighting? Y/N ")
-    while keep_fight.capitalize() == "Y":
+    orc.hp = orc.hp - player.attack
+    print(orc.hp, "health left")
+    if orc.hp < 1:
+        player.gold = player.gold + orc.gold_drop
+        print("Your gold:", player.gold)
+def continue_fight_skeleton():
+    next = input("What will you do next? (Fight/Food/Flee) ")
+    if next.capitalize == "Food":
+        eat_food()
+    elif next.capitalize == "Fight":
         fight_skeleton()
-        keep_fight = input("Do you want to keep fighting? Y/N ")
-def keep_fighting_goblin():
-    new_player_hp = player.hp - goblin.attack
-    print("Your hp",new_player_hp)
-    keep_fight = input("Do you want to keep fighting? Y/N ")
-    while keep_fight.capitalize() == "Y":
+    elif next.capitalize == "Flee":
+        print("You fled")
+    else: 
+        print("Something went wrong _(:з)∠)_")
+def continue_fight_goblin():
+    next = input("What will you do next? (Fight/Food/Flee) ")
+    if next.capitalize == "Food":
+        eat_food()
+    elif next.capitalize == "Fight":
         fight_goblin()
-        keep_fight = input("Do you want to keep fighting? Y/N ")
-def keep_fighting_orc():
-    new_player_hp = player.hp - orc.attack
-    print("Your hp",new_player_hp)
-    keep_fight = input("Do you want to keep fighting? Y/N ")
-    while keep_fight.capitalize() == "Y":
+    elif next.capitalize == "Flee":
+        print("You fled")
+    else: 
+        print("Something went wrong _(:з)∠)_")
+def continue_fight_orc():
+    next = input("What will you do next? (Fight/Food/Flee) ")
+    if next.capitalize == "Food":
+        eat_food()
+    elif next.capitalize == "Fight":
         fight_orc()
-        keep_fight = input("Do you want to keep fighting? Y/N ")
+    elif next.capitalize == "Flee":
+        print("You fled")
+    else: 
+        print("Something went wrong _(:з)∠)_")
 
 
 
@@ -110,7 +117,7 @@ if randoms == 1:
     choose = input("What will you do? (Fight/Food/Run) ")
     if choose.capitalize() == "Fight":
        fight_skeleton()
-       keep_fighting_skeleton()
+       continue_fight_skeleton()
     elif choose.capitalize() == "Food":
         eat_food()
     elif choose.capitalize() == "Run":
@@ -122,7 +129,7 @@ elif randoms == 2:
     choose = input("What will you do? (Fight/Food/Run) ")
     if choose.capitalize() == "Fight":
         fight_goblin()
-        keep_fighting_goblin()
+        continue_fight_goblin()
     elif choose.capitalize() == "Food":
            eat_food()
     elif choose.capitalize() == "Run":
@@ -134,7 +141,7 @@ elif randoms == 3:
     choose = input("What will you do? (Fight/Food/Run) ")
     if choose.capitalize() == "Fight":
        fight_orc()
-       keep_fighting_orc()
+       continue_fight_orc()
     elif choose.capitalize() == "Food":
         eat_food()
     elif choose.capitalize() == "Run":
