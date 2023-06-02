@@ -34,7 +34,7 @@ goblin = Mobs(50, 10, 2, 0)
 orc = Mobs(75, 5, 3, 0)
 
 class Dungeon():
-    def eat_food():
+    def eat_food(player):
         which_eat = input("What food do you want to eat? (Apple, Bread, Pie) ")
         if inventory_apple > 0:
             if which_eat.capitalize() == "Apple":
@@ -83,45 +83,45 @@ class Dungeon():
         print(player.hp, "player health left")
         if orc.hp < 1:
             player.gold = player.gold + orc.gold_drop
-            print("Your gold:", player.gold)
-    def continue_fight_skeleton():
-        next = input("What will you do next? (Fight/Food/Flee) ")
-        while next.capitalize() != "Flee" and skeleton.hp > 0 and player.hp > 0:
-            if skeleton.hp > 0 or player.hp > 0:
-                if next.capitalize() == "Food":
-                    eat_food()
-                    next = input("What will you do next? (Fight/Food/Flee) ")
-                elif next.capitalize() == "Fight":
-                    fight_skeleton()
-                    next = input("What will you do next? (Fight/Food/Flee) ")
-                elif next.capitalize() == "Flee":
-                    print("You fled")
-                else: 
-                    print("Something went wrong _(:з)∠)_")
-            if skeleton.hp <= 0:
-                print("you defeated the skeleton")
-            if player.hp <= 0:
-                print("you died")
-    def continue_fight_goblin():
-        next = input("What will you do next? (Fight/Food/Flee) ")
-        if next.capitalize() == "Food":
-            eat_food()
-        elif next.capitalize() == "Fight":
-            fight_goblin()
-        elif next.capitalize() == "Flee":
-            print("You fled")
-        else: 
-            print("Something went wrong _(:з)∠)_")
-    def continue_fight_orc():
-        next = input("What will you do next? (Fight/Food/Flee) ")
-        if next.capitalize() == "Food":
-            eat_food()
-        elif next.capitalize() == "Fight":
-            fight_orc()
-        elif next.capitalize() == "Flee":
-            print("You fled")
-        else: 
-            print("Something went wrong _(:з)∠)_")
+    #         print("Your gold:", player.gold)
+    # def continue_fight_skeleton():
+    #     next = input("What will you do next? (Fight/Food/Flee) ")
+    #     while next.capitalize() != "Flee" and skeleton.hp > 0 and player.hp > 0:
+    #         if skeleton.hp > 0 or player.hp > 0:
+    #             if next.capitalize() == "Food":
+    #                 eat_food()
+    #                 next = input("What will you do next? (Fight/Food/Flee) ")
+    #             elif next.capitalize() == "Fight":
+    #                 fight_skeleton()
+    #                 next = input("What will you do next? (Fight/Food/Flee) ")
+    #             elif next.capitalize() == "Flee":
+    #                 print("You fled")
+    #             else: 
+    #                 print("Something went wrong _(:з)∠)_")
+    #         if skeleton.hp <= 0:
+    #             print("you defeated the skeleton")
+    #         if player.hp <= 0:
+    #             print("you died")
+    # def continue_fight_goblin():
+    #     next = input("What will you do next? (Fight/Food/Flee) ")
+    #     if next.capitalize() == "Food":
+    #         eat_food()
+    #     elif next.capitalize() == "Fight":
+    #         fight_goblin()
+    #     elif next.capitalize() == "Flee":
+    #         print("You fled")
+    #     else: 
+    #         print("Something went wrong _(:з)∠)_")
+    # def continue_fight_orc():
+    #     next = input("What will you do next? (Fight/Food/Flee) ")
+    #     if next.capitalize() == "Food":
+    #         eat_food()
+    #     elif next.capitalize() == "Fight":
+    #         fight_orc()
+    #     elif next.capitalize() == "Flee":
+    #         print("You fled")
+    #     else: 
+    #         print("Something went wrong _(:з)∠)_")
 
 
 
