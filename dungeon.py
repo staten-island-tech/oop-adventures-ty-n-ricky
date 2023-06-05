@@ -20,10 +20,21 @@ scythe = Weapon(100, 75)
 
 
 class Player():
-    def __init__(self, hp, attack, gold):
+    def __init__(self, hp, attack, gold, sword, armor, apple, bread, pie):
         self.hp = hp
         self.attack = attack
         self.gold = gold
+        self.sword = sword
+        self.sledgehammer = sledgehammer
+        self.axe = axe
+        self.scythe = scythe
+        self.bronze = bronze
+        self.iron = 
+        self.armor = armor
+        self.apple = apple
+        self.bread = bread
+        self.pie = pie
+
 class Mobs(Player):
     def __init__(self, hp, attack, gold_drop, gold):
         super().__init__(hp, attack, gold)
