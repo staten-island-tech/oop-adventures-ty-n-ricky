@@ -17,7 +17,6 @@ class Shop():
          new_inventory_apple = int(inventory_apple) + int(how_much_apple)
          print("Your gold", player.gold)
          print("Your apple", new_inventory_apple)
-         """ return y """
       else:
          print("Not enough gold")
    def bread_buy(player):
@@ -59,11 +58,11 @@ class Shop():
          y.append("steel")
          print("Your gold", player.gold)
          print("Your steel", new_inventory_steel)
-   def buy_sword(player, x):
+   def buy_sword(player):
       player.gold = player.gold - 10
       if player.gold >= 0:
          new_inventory_sword = int(inventory_sword) + 1
-         x.append("sword")
+         player.append("sword")
          print("You gold",player.gold)
          print("Your sword",new_inventory_sword)
    def buy_sledge(player, x):
